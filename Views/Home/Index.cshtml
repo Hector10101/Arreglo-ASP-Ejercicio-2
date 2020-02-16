@@ -1,0 +1,19 @@
+﻿@model Numeros
+@{
+    ViewData["Title"] = "Ingresar";
+}
+    <div class="text-center">
+        <h2 class="">Ingresa 10 números</h2>
+        <form  method="post" asp-action="Index">
+            <div class="form-group row">
+                @for (int i = 0; i < 10; i++)
+                {
+                    <div class="col-md-6">
+                        <p>Numero @(i + 1)  </p>
+                        <input asp-for="Numero[i]" required />
+                    </div>
+                }                           
+            </div>
+            <button type="submit" class="btn btn-primary" asp-controller="Inicio" asp-action="Index">Aceptar</button>
+        </form>
+    </div>
