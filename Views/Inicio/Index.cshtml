@@ -1,17 +1,43 @@
-﻿@model Numeros
+﻿
+@model Numeros
 @{
     ViewData["Title"] = "M&M-Tabla";
 }
 
 <h3>Mayor y Menor</h3>
 <div>
-    <h6>El Numero Mayor es: @ViewData["NumMayor"]</h6>
+    <h6>El Numero Mayor es: @ViewData["NumMayor"] </h6>
     <h6>El Numero Menor es: @ViewData["NumMenor"]</h6>
 </div>
 
+<hr />
+<h3>Tabla de Suma</h3>
 
-<h3>Tabla Suma</h3>
 <div>
-    <label>Aquí irá la tabla de la suma de los valores ingresados</label>
+    <table class="table">
+        <tr class="bg-secondary">
+            <th>Valores Ingresados</th>
+            @for (int i = 0; i < 10; i++)
+            {
+                <th>Suma #@(i + 1) Número Ingresado (@Model.Numero[i])</th>
+            }
+        </tr>
+        
+        @for (int i = 0; i < 10; i++)
+        {
+            <tr>
+                @*Numeros Ingresados*@
+                <td>@Model.Numero[i]</td>
+
+                @*Suma de los numeros*@
+                @foreach(int Num in Model.Numero)
+                {
+                    <td>@(Model.Numero[i] + Num)</td>
+                }
+
+            </tr>
+        }
+    </table>
+   <a class="btn btn-primary" asp-controller="Home" asp-action="Index" >Volver</a>
 </div>
 
